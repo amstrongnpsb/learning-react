@@ -1,12 +1,12 @@
-import Button from "./components/elements/button";
+// import LoginForm from "./components/fragments/loginform";
+import LoginForm from "./components/fragments/loginform";
+import RegisterForm from "./components/fragments/registerform";
 function App() {
   return (
     <>
-      <div className="flex m-auto bg-slate-500 w-5/6 gap-3 justify-around p-3 box-border">
-        <Button background=" bg-slate-900" name="Login" />
-        <Button name=" Register" background="bg-blue-900" />
-        <Button background=" bg-violet-900" name="Logout" />
-        <Button />
+      <div className=" max-w-screen-lg mx-auto h-screen flex p-8">
+        <LoginForm />
+        {/* <RegisterForm /> */}
       </div>
     </>
   );
