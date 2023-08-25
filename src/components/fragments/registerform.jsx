@@ -1,5 +1,6 @@
 import InputForm from "../elements/Input/Index";
 import Button from "../elements/Button/Index";
+import { Link } from "react-router-dom";
 const RegisterForm = () => {
   return (
     <form action="" className="m-2">
@@ -31,6 +32,13 @@ const RegisterForm = () => {
       <div className="text-center mt-2">
         <Button name="Register" background="bg-blue-950" />
       </div>
+
+      <p className="text-center mt-4 text-sm">
+        Already have Account?
+        <Link to="/login" className="font-bold text-blue-950">
+          Sign In
+        </Link>
+      </p>
     </form>
   );
 };
