@@ -1,6 +1,11 @@
-import Label from "./label";
-import Input from "./input";
-const InputForm = ({ name, type, placeholder, label }) => {
+import Label from "./Label";
+import Input from "./Input";
+const InputForm = ({
+  name,
+  type = "text",
+  placeholder = "placeholder",
+  label,
+}) => {
   return (
     <div>
       <div className=" font-bold w-3/6 mx-auto mb-5 text-blue-950 capitalize ">
