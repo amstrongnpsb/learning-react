@@ -1,5 +1,7 @@
+import { Fragment } from "react";
 import PageLayout from "../components/Layouts/PageLayout";
 import Cardproduct from "../components/fragments/cardproduct";
+import Navbar from "../components/fragments/navbar";
 const ProductPage = () => {
   const Products = [
     {
@@ -37,38 +39,41 @@ const ProductPage = () => {
     },
   ];
   return (
-    <PageLayout title="Product">
-      {Products.length === 0 && <Cardproduct />}
-      {Products.map((product) => (
-        <Cardproduct.ProductDark
-          key={`${product.id}`}
-          status={`${product.status}`}
-          productName={`${product.name}`}
-          productDesc={`${product.desc}`}
-          productPrice={`${product.price
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
-          productImage={
-            product.image.length > 0 ? product.image : "./images/no_image.png"
-          }
-        />
-      ))}
-      {Products.length === 0 && <Cardproduct />}
-      {Products.map((product) => (
-        <Cardproduct.ProductLight
-          key={`${product.id}`}
-          status={`${product.status}`}
-          productName={`${product.name}`}
-          productDesc={`${product.desc}`}
-          productPrice={`${product.price
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
-          productImage={
-            product.image.length > 0 ? product.image : "./images/no_image.png"
-          }
-        />
-      ))}
-    </PageLayout>
+    <Fragment>
+      <Navbar />
+      <PageLayout title="Product">
+        {Products.length === 0 && <Cardproduct />}
+        {Products.map((product) => (
+          <Cardproduct.ProductDark
+            key={`${product.id}`}
+            status={`${product.status}`}
+            productName={`${product.name}`}
+            productDesc={`${product.desc}`}
+            productPrice={`${product.price
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+            productImage={
+              product.image.length > 0 ? product.image : "./images/no_image.png"
+            }
+          />
+        ))}
+        {Products.length === 0 && <Cardproduct />}
+        {Products.map((product) => (
+          <Cardproduct.ProductLight
+            key={`${product.id}`}
+            status={`${product.status}`}
+            productName={`${product.name}`}
+            productDesc={`${product.desc}`}
+            productPrice={`${product.price
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+            productImage={
+              product.image.length > 0 ? product.image : "./images/no_image.png"
+            }
+          />
+        ))}
+      </PageLayout>
+    </Fragment>
   );
 };
 
