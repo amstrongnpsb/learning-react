@@ -6,7 +6,7 @@ const Navbar = () => {
     window.location.href = "/login";
   };
   return (
-    <div className="w-full h-auto bg-white flex-row items-center justify-between flex gap-3 box-border p-4 font-bold text-blue-950">
+    <div className="w-full h-auto bg-white flex-row items-center justify-between flex gap-3 box-border p-4 font-bold text-blue-950 text-xl">
       <div className=" w-2/12 px-20 h-full">Learning React</div>
       <div className=" w-2/4 ">
         <ul className="flex justify-evenly">

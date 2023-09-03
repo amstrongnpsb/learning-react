@@ -1,8 +1,23 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import PageLayout from "../components/Layouts/PageLayout";
 import Cardproduct from "../components/fragments/cardproduct";
 import Navbar from "../components/fragments/navbar";
+import AddtoCart from "../components/fragments/addtocart";
+import { Link } from "react-router-dom";
 const ProductPage = () => {
+  const [cart, setCart] = useState([]);
+
+  const handleAddToCart = (id) => {
+    if (cart.find((item) => item.id == id)) {
+      setCart(
+        cart.map((item) =>
+          item.id == id ? { ...item, qty: item.qty + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { id, qty: 1 }]);
+    }
+  };
   const Products = [
     {
       id: 1,
@@ -49,29 +64,39 @@ const ProductPage = () => {
             status={`${product.status}`}
             productName={`${product.name}`}
             productDesc={`${product.desc}`}
-            productPrice={`${product.price
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+            productPrice={`${product.price.toLocaleString("id-ID", {
+              currency: "IDR",
+            })}`}
             productImage={
               product.image.length > 0 ? product.image : "./images/no_image.png"
             }
+            addToCart={handleAddToCart}
+            id={`${product.id}`}
           />
         ))}
-        {Products.length === 0 && <Cardproduct />}
-        {Products.map((product) => (
-          <Cardproduct.ProductLight
-            key={`${product.id}`}
-            status={`${product.status}`}
-            productName={`${product.name}`}
-            productDesc={`${product.desc}`}
-            productPrice={`${product.price
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
-            productImage={
-              product.image.length > 0 ? product.image : "./images/no_image.png"
-            }
-          />
-        ))}
+        <AddtoCart>
+          {cart.length === 0 && <h1>Nothing In Cart</h1>}
+          {cart.map((item) => {
+            const product = Products.find((product) => product.id == item.id);
+
+            return (
+              <Link
+                to=""
+                className="flex flex-row w-full justify-evenly p-2"
+                key={`${item.id}`}
+              >
+                <h1 className="capitalize">{product.name}</h1>
+                <h1>x{item.qty}</h1>
+                <h1>
+                  {(item.qty * product.price).toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })}
+                </h1>
+              </Link>
+            );
+          })}
+        </AddtoCart>
       </PageLayout>
     </Fragment>
   );

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 const Cardproduct = () => {
   return <p className="text-5xl font-bold text-blue-950">No Product</p>;
 };
@@ -30,22 +29,22 @@ export const ProductLight = ({
           </span>
         </div>
         {status === "available" && (
-          <Link
+          <button
             to="product"
             className="font-bold text-xl text-white bg-blue-950 w-3/6 p-2 rounded-lg self-end text-center  "
           >
             <i className="fa-solid fa-cart-plus text-white"></i>
             {" Add to Cart"}
-          </Link>
+          </button>
         )}
         {status === "sold" && (
-          <Link
+          <button
             to=""
             className="font-bold text-xl text-white bg-blue-950 w-3/6 p-2 rounded-lg self-end text-center  "
           >
             <i className="fa-solid fa-cart-plus text-white"></i>
             {" sold"}
-          </Link>
+          </button>
         )}
       </div>
     </div>
@@ -57,6 +56,8 @@ export const ProductDark = ({
   productDesc,
   productPrice,
   productImage,
+  addToCart,
+  id,
 }) => {
   return (
     <div
@@ -78,22 +79,23 @@ export const ProductDark = ({
           </span>
         </div>
         {status === "available" && (
-          <Link
+          <button
+            onClick={() => addToCart(id)}
             to="product"
             className="font-bold text-xl text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
           >
             <i className="fa-solid fa-cart-plus text-blue-950"></i>
             {" Add to Cart"}
-          </Link>
+          </button>
         )}
         {status === "sold" && (
-          <Link
+          <button
             to=""
             className="font-bold text-xl text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
           >
             <i className="fa-solid fa-xmark text-blue-950"></i>
             {" sold"}
-          </Link>
+          </button>
         )}
       </div>
     </div>
