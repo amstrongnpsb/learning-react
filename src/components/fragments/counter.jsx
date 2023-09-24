@@ -7,6 +7,9 @@ export default class Counter extends Component {
       count: 0,
     };
   }
+  componentDidMount() {
+    this.setState({ count: 10 });
+  }
   render() {
     return (
       <div className="w-full bg-slate-300 h-auto flex flex-row justify-center gap-5 text-xl font-bold ">

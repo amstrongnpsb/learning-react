@@ -1,11 +1,15 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import PageLayout from "../components/Layouts/PageLayout";
 import Cardproduct from "../components/fragments/cardproduct";
 import Navbar from "../components/fragments/navbar";
 import AddtoCart from "../components/fragments/addtocart";
+import Counter from "../components/fragments/counter";
 import { Link } from "react-router-dom";
 const ProductPage = () => {
   const [cart, setCart] = useState([]);
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+  }, []);
 
   const handleAddToCart = (id) => {
     if (cart.find((item) => item.id == id)) {
@@ -18,6 +22,7 @@ const ProductPage = () => {
       setCart([...cart, { id, qty: 1 }]);
     }
   };
+
   const Products = [
     {
       id: 1,
@@ -74,7 +79,7 @@ const ProductPage = () => {
             id={`${product.id}`}
           />
         ))}
-        <AddtoCart>
+        <AddtoCart item={cart} products={Products}>
           {cart.length === 0 && <h1>Nothing In Cart</h1>}
           {cart.map((item) => {
             const product = Products.find((product) => product.id == item.id);
@@ -97,6 +102,7 @@ const ProductPage = () => {
             );
           })}
         </AddtoCart>
+        <Counter />
       </PageLayout>
     </Fragment>
   );

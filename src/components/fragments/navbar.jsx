@@ -22,16 +22,32 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="w-2/12 flex flex-row justify-between pr-6">
-        <p>{authUser.username}</p>
-        <button
-          className="hover:text-emerald-500 flex gap-1"
-          onClick={buttonClicked}
-        >
-          Logout
-          <span>
-            <i className="fa-solid fa-right-from-bracket"></i>
-          </span>
-        </button>
+        {authUser == null ? (
+          <div>
+            <button
+              className="hover:text-emerald-500 flex gap-1"
+              onClick={buttonClicked}
+            >
+              Login
+              <span>
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </span>
+            </button>
+          </div>
+        ) : (
+          <div className="flex justify-between w-full">
+            <p>{authUser.username}</p>
+            <button
+              className="hover:text-emerald-500 flex gap-1"
+              onClick={buttonClicked}
+            >
+              Logout
+              <span>
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
