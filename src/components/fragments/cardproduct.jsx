@@ -64,7 +64,7 @@ export const ProductDark = ({
       className="bg-blue-950 w-3/12 h-auto rounded-lg flex flex-col p-4  "
     >
       <div className=" w-full h-[200px] flex justify-center mx-auto ">
-        <img src={`${productImage}`} alt="" className="self-center h-full " />
+        <img src={`${productImage}`} alt="" className="min-h-full" />
       </div>
       <div className="flex flex-col h-full justify-between w-full mt-4 px-4">
         <div>
@@ -83,7 +83,7 @@ export const ProductDark = ({
         <button
           onClick={() => addToCart(id)}
           to="product"
-          className="font-bold text-xl text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
+          className="font-bold text-base text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
         >
           <i className="fa-solid fa-cart-plus text-blue-950"></i>
           {" Add to Cart"}
