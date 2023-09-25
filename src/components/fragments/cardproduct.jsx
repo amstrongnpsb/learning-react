@@ -51,7 +51,6 @@ export const ProductLight = ({
   );
 };
 export const ProductDark = ({
-  status,
   productName,
   productDesc,
   productPrice,
@@ -70,33 +69,25 @@ export const ProductDark = ({
       <div className="flex flex-col h-full justify-between w-full mt-4 px-4">
         <div>
           <h1 className="text-white text-xl font-bold capitalize">
-            {productName}
+            {productName.substr(0, 20)}...
           </h1>
-          <p className="text-white text-base">{productDesc}</p>
+          <p className="text-white text-base">
+            {productDesc.substr(0, 100)}...
+          </p>
           <span className="text-white font-bold text-xl ">
-            <i className="fa-solid fa-rupiah-sign"></i>
+            <i className="fa-solid fa-dollar-sign"></i>
             {productPrice}
           </span>
         </div>
-        {status === "available" && (
-          <button
-            onClick={() => addToCart(id)}
-            to="product"
-            className="font-bold text-xl text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
-          >
-            <i className="fa-solid fa-cart-plus text-blue-950"></i>
-            {" Add to Cart"}
-          </button>
-        )}
-        {status === "sold" && (
-          <button
-            to=""
-            className="font-bold text-xl text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
-          >
-            <i className="fa-solid fa-xmark text-blue-950"></i>
-            {" sold"}
-          </button>
-        )}
+
+        <button
+          onClick={() => addToCart(id)}
+          to="product"
+          className="font-bold text-xl text-blue-950 bg-white w-3/6 p-2 rounded-lg self-end text-center  "
+        >
+          <i className="fa-solid fa-cart-plus text-blue-950"></i>
+          {" Add to Cart"}
+        </button>
       </div>
     </div>
   );

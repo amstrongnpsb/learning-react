@@ -1,4 +1,4 @@
-function addtocart({ children }) {
+function Addtocart({ children }) {
   return (
     <div className="w-2/12  bg-blue-950 text-white text-lg fixed right-0 min-h-[600px] rounded-l-xl flex flex-col items-center font-bold py-5 ">
       Cart List
@@ -7,4 +7,4 @@ function addtocart({ children }) {
   );
 }
 
-export default addtocart;
+export default Addtocart;
